@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Calculator with JS</title>
+    <title>Calculator with HTML & JS</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
+<div id="app">
     <div class="formstyle">
         <form name="forms">
-            <input type="text" name="answer">
+            <input type="text" name="answer" class="master" v-model="answer">
             <br><br>
             <input class="key_button" type="button" value="1" onclick="form.answer.value += '1'">
             <input class="key_button" type="button" value="2" onclick="form.answer.value += '2'">
@@ -31,9 +33,15 @@
             <input class="key_button" type="button" value="." onclick="form.answer.value += '.'">
             <input class="key_button" type="button" value="*" onclick="form.answer.value += '*'">
             <br>
-            <input class="key_button" id="zero" type="button" value="=" onclick="form.answer.value = eval(forms.answer.value)">
+            <input class="key_button zero" type="button" value="=" onclick="form.answer.value = eval(forms.answer.value)">
         </form>
+		<b>Message</b>:{{message}}<br>
+		<b>Author Name</b>:{{author}}<br>
+		<b>My Github Page</b>:{{link}}<br>
+		<b>Github Repo</b>:{{project}}<br>
+		<b>Facebook</b>:{{fb}}<br>
     </div>
+	</div>
     <style>
         .key_button{
             background:#273c75;
@@ -45,12 +53,36 @@
             border-radius:5px;
             margin:5px;
         }
-        #zero{
+        .zero{
             width:245 px;
         }
+		.master{
+			height:50px;
+			width:230px;
+			border:1px solid purple;
+			margin-left:10px;
+		}
+		.formstyle{
+			border:1px solid black;
+			padding:40px;
+			align-content:center;
+			width:300px !important;
+			margin-left:300px;
+			background:rgba(0,0,0,0.2);
+			color:white;
+		}
     </style>
     <script>
-    
+		var app = new Vue({
+			el:'#app',
+			data:{
+				message:`Please do the formal calculations here`,
+				author:'Biswas Sampad',
+				link:'github.com/biswassampad',
+				project:'github.com/biswassampad/calculator',
+				fb:'facebook.com/biswassampad01'
+			}
+		})
     </script>
 </body>
 </html>
